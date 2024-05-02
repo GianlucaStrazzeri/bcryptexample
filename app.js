@@ -1,10 +1,10 @@
 const express = require('express');
 const session = require('express-session');
-const { hashedSecret } = require('./crypto/config');
-const routes = require('./routes');
+const { hashedSecret } = require('./src/crypto/config');
+const routes = require('./src/routes');
 
 const app = express();
-const PORT = 4000;
+const PORT=process.env.PORT||3000;//defino el puerto de esta forma para que pueda luego exportarlo para la conexión base de datos
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

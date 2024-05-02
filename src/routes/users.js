@@ -3,8 +3,8 @@ const router = express.Router();
 const { generateToken, verifyToken } = require('../middlewares/authMiddleware');
 const { users } = require('../data/users');
 
+// Verifica si el usuario está logado
 router.get('/', (req, res) => {
-  // Verifica si el usuario está logado
   if (req.session.token) {
     res.send(`
       <h1>Bienvenido al Dashboard</h1>
@@ -68,6 +68,7 @@ router.get('/dashboard', verifyToken, (req, res) => {
       <p>ID: ${user.id}</p>
       <p>UserName: ${user.username}</p>
       <a href="/">HOME</a>
+      <a href="/patients">Pacientes</a>
       <form action="/logout" method="post">
         <button type="submit">Cerrar sesión</button> 
       </form>
