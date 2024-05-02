@@ -3,46 +3,9 @@ const router = express.Router();
 const { generateToken, verifyToken } = require('../middlewares/authMiddleware');
 const { users } = require('../data/users');
 
-// Verifica si el usuario está logado
-router.get('/', (req, res) => {
-  if (req.session.token) {
-    res.send(`
-      <h1>Bienvenido al Dashboard</h1>
-      <a href="/dashboard">Ir al dashboard</a>
-      <form action="/logout" method="post">
-        <button type="submit">Cerrar sesión</button>
-      </form>
-    `);
-  } else {
-    const loginForm = `
-    <div style="
-    display:flex; 
-    flex-direction:column; 
-    align-items:center;
-    border: 1px solid blue;
-    ">
-    <h1>Login Page</h1>
-      <form action="/login" method="post">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required><br>
 
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required><br>
-<div style="
-display:flex;
-justify-content:center;
-">
-<button type="submit">Iniciar sesión</button>
-</div>
-        
-      </form>
-      <a href="/dashboard">dashboard</a>
-      </div>
-    `;
 
-    res.send(loginForm);
-  }
-});
+  
 
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
