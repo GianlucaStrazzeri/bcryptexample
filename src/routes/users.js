@@ -68,7 +68,7 @@ router.get('/dashboard', verifyToken, (req, res) => {
       <p>ID: ${user.id}</p>
       <p>UserName: ${user.username}</p>
       <a href="/">HOME</a>
-      <a href="/patients">Pacientes</a>
+      <a href="/patients/ssr">Pacientes</a>
       <form action="/logout" method="post">
         <button type="submit">Cerrar sesión</button> 
       </form>
