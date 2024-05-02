@@ -15,16 +15,29 @@ router.get('/', (req, res) => {
     `);
   } else {
     const loginForm = `
+    <div style="
+    display:flex; 
+    flex-direction:column; 
+    align-items:center;
+    border: 1px solid blue;
+    ">
+    <h1>Login Page</h1>
       <form action="/login" method="post">
         <label for="username">Usuario:</label>
         <input type="text" id="username" name="username" required><br>
 
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" required><br>
-
-        <button type="submit">Iniciar sesión</button>
+<div style="
+display:flex;
+justify-content:center;
+">
+<button type="submit">Iniciar sesión</button>
+</div>
+        
       </form>
       <a href="/dashboard">dashboard</a>
+      </div>
     `;
 
     res.send(loginForm);
