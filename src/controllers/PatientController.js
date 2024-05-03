@@ -18,18 +18,19 @@ const PatientController={
             
             res.send(
                 `
-                
+                <a href="/dashboard"><button>Home</button></a>
+                <a href="/login/create"><button>Crea un nuevo usuario</button></a>
+                <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
+                <form action="/logout" method="post">
+                    <button type="submit">Cerrar sesión</button> 
+                </form>
                 <div style="
                 display:flex;
                 flex-direction:column;
                 align-items:center;
                 ">
                 <h1>Todos los pacientes</h1>
-                <a href="/login"><button>Crea un nuevo usuario</button></a>
-                <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
-                <form action="/logout" method="post">
-                    <button type="submit">Cerrar sesión</button> 
-                </form>
+                
               
                 </div>
 
@@ -83,7 +84,7 @@ const PatientController={
               align-items:center;
               border: 1px solid black;
               ">
-              <a href="/patients/ssr">Home</a>
+              <a href="/dashboard">Home</a>
               <ul>
               <li>Nombre: ${patient.nombre}</li>
               <li>Apellido: ${patient.apellido}</li>

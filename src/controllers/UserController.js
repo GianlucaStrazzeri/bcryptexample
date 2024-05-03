@@ -8,7 +8,7 @@ const UserController={
     async getHomePage (req,res){
         if (req.session.token) {
             res.send(`
-              <h1>Bienvenido al Dashboard</h1>
+              <h1>Bienvenido a la Home</h1>
               <a href="/dashboard">Ir al dashboard</a>
               <form action="/logout" method="post">
                 <button type="submit">Cerrar sesión</button>
@@ -171,6 +171,27 @@ const UserController={
         }
     },
 
+    async verifyTokens(req,res){
+        const userId = req.user;
+  const user = users.find((user) => user.id === userId);
+  if (user) {
+    res.send(`
+      <h1>Bienvenido, ${user.name}</h1>
+      <p>ID: ${user.id}</p>
+      <p>UserName: ${user.username}</p>
+      <a href="/">HOME</a>
+      <a href="/patients/ssr">Pacientes</a>
+      <a href="/patient/create/form"> Crea nuevoPaciente</a>
+      <form action="/logout" method="post">
+        <button type="submit">Cerrar sesión</button> 
+      </form>
+    `);
+  } else {
+    res.status(401).json({ mensaje: 'Usuario no encontrado' });
+  }
+},
+    
+   
 }
 
 module.exports= UserController;

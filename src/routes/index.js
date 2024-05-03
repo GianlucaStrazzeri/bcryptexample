@@ -4,6 +4,7 @@ const usersRoutes = require('./users');
 const PatientController = require('../controllers/PatientController.js') //requiero PatientController para hacer funcionar los controladores
 const UserController= require ("../controllers/UserController.js") //requiero UserController para hacer funcionar los controladores
 const { users } = require('../data/users');
+const { generateToken, verifyToken } = require('../middlewares/authMiddleware');
 
 router.use('/', usersRoutes);
 
@@ -17,6 +18,7 @@ router.post("/patient/create", PatientController.createNewPatient)//Crea un nuev
 router.post("/patients/:_id",PatientController.deletePatient)//Elimina un producto desde su pagina, los formularios en html, solo tienen dos métodos:get y post por eso no se utilza router.delete
 
 router.post("/login",UserController.createToken) //Crea un token si el username y el passwoord son correctos
+router.get('/dashboard', verifyToken, UserController.verifyTokens)// Verifica el token
 router.get("/", UserController.getHomePage)//Da Acceso a la HomePage y verifica si el usuario está logado
 router.get("/login/create",UserController.createUser)//Get login al darle al boton crea un usuario
 router.get('/user/ssr', UserController.getAllUsersSsr )//Devuelve  todos los Usuarios
