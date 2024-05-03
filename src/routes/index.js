@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const usersRoutes = require('./users');
+
 const PatientController = require('../controllers/PatientController.js') //requiero PatientController para hacer funcionar los controladores
 const UserController= require ("../controllers/UserController.js") //requiero UserController para hacer funcionar los controladores
 const { users } = require('../data/users');
 const { generateToken, verifyToken } = require('../middlewares/authMiddleware');
 
-router.use('/', usersRoutes);
+
 
 
 router.get('/patients', PatientController.getAllPatients )//Devuelve  todos los pacientes
@@ -23,6 +23,7 @@ router.get("/", UserController.getHomePage)//Da Acceso a la HomePage y verifica 
 router.get("/login/create",UserController.createUser)//Get login al darle al boton crea un usuario
 router.get('/user/ssr', UserController.getAllUsersSsr )//Devuelve  todos los Usuarios
 router.post("/user/create", UserController.createNewUser)//Crea un nuevo usuario
+router.post("/logout",UserController.destroySession) //destruye la sesión
 
 
 

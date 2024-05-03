@@ -206,7 +206,11 @@ const UserController={
   }
 },
     
-   
+   async destroySession (req,res){
+    req.session.destroy();
+  res.redirect('/');
+
+   }
 }
 
 module.exports= UserController;
