@@ -72,7 +72,7 @@ const UserController={
             res.send(
                 `
                 <div style="display:flex; flex-direction:column; align-items:center;">
-                <a href="/">Home</a>
+                <a href="/dashboard">Home</a>
                 <h1>Crea un usuario</h1>
                 <a href="/"> Have you got an account? </a>
                 
@@ -133,11 +133,11 @@ const UserController={
                 flex-direction:column;
                 align-items:center;
                 ">
-                <h1>HomePage</h1>
+                <a href="/dashboard"><button>Home</button></a>
                 <form action="/logout" method="post">
                     <button type="submit">Cerrar sesión</button> 
                         </form>
-                <a href="/login"><button>Login</button></a>
+                <a href="/login/create"><button>Crea nuevo Usuario</button></a>
                 <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
                 <h2>Todos los usuarios </h2>
                 
@@ -176,15 +176,30 @@ const UserController={
   const user = users.find((user) => user.id === userId);
   if (user) {
     res.send(`
+    <div style="
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    ">
       <h1>Bienvenido, ${user.name}</h1>
       <p>ID: ${user.id}</p>
       <p>UserName: ${user.username}</p>
-      <a href="/">HOME</a>
-      <a href="/patients/ssr">Pacientes</a>
-      <a href="/patient/create/form"> Crea nuevoPaciente</a>
+<div>
+      <button><a href="/">HOME</a></button>
+</div>
+<div>
+      <button><a href="/patients/ssr">Todos los Pacientes</a></button>
+      <button><a href="/user/ssr">Todos los usuarios</a></button>
+</div>
+<div>
+      <button><a href="/patient/create/form"> Crea nuevo Paciente</a></button>
+      <button><a href="/login/create"> Crea nuevo Usuario</a></button>
+</div>
       <form action="/logout" method="post">
         <button type="submit">Cerrar sesión</button> 
       </form>
+      </div>
     `);
   } else {
     res.status(401).json({ mensaje: 'Usuario no encontrado' });
