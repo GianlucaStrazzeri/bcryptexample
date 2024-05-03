@@ -8,11 +8,20 @@ const UserController={
     async getHomePage (req,res){
         if (req.session.token) {
             res.send(`
-              <h1>Bienvenido a la Home</h1>
+<div style="
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+">
+    <h1>Bienvenido a la Home</h1>
               <a href="/dashboard">Ir al dashboard</a>
               <form action="/logout" method="post">
                 <button type="submit">Cerrar sesión</button>
               </form>
+</div> 
+
+              
             `);
           } else {
             const loginForm = `
