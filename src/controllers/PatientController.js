@@ -24,10 +24,12 @@ const PatientController={
                 flex-direction:column;
                 align-items:center;
                 ">
-                <h1>HomePage</h1>
-                <a href="/login"><button>Login</button></a>
+                <h1>Todos los pacientes</h1>
+                <a href="/login"><button>Crea un nuevo usuario</button></a>
                 <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
-                <h2>Todos los pacientes </h2>
+                <form action="/logout" method="post">
+                    <button type="submit">Cerrar sesión</button> 
+                </form>
               
                 </div>
 

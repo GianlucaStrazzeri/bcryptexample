@@ -72,14 +72,14 @@ const UserController={
             res.send(
                 `
                 <div style="display:flex; flex-direction:column; align-items:center;">
-                <a href="/patients/ssr">Home</a>
-                <h1>Login</h1>
-                <p> Have you got an account? </p>
+                <a href="/">Home</a>
+                <h1>Crea un usuario</h1>
+                <a href="/"> Have you got an account? </a>
                 
                 <form action="/user/create" method="POST">
                 <input type="text" name="username" placeholder="username"></input>
                 <input type="password" name="contraseña" placeholder="password"></input>
-                <button>Enter</button>
+                <button>Crea</button>
                 </form>
                 <p> Do you need to Sign up? </p>
                 <button>Register with Google</button>

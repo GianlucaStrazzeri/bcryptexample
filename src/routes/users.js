@@ -18,6 +18,7 @@ router.get('/dashboard', verifyToken, (req, res) => {
       <p>UserName: ${user.username}</p>
       <a href="/">HOME</a>
       <a href="/patients/ssr">Pacientes</a>
+      <a href="/patient/create/form"> Crea nuevoPaciente</a>
       <form action="/logout" method="post">
         <button type="submit">Cerrar sesión</button> 
       </form>
