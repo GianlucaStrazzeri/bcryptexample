@@ -1,5 +1,7 @@
 const {User} =require ("../models/Users")// requiero los usuarios de models
 const {Patient} =require ("../models/Patients")// requiero los pacientes de models
+const { generateToken, verifyToken } = require('../middlewares/authMiddleware');
+const { users } = require('../data/users');
 
 const UserController={
 
@@ -44,8 +46,28 @@ const UserController={
         
     },
 
+    async createToken (req,res){
+        const { username, password } = req.body;
+  const user = users.find(
+    (user) => user.username === username && user.password === password
+  );
 
-    async getLogin (req,res){
+  if (user) {
+    const token = generateToken(user);
+    req.session.token = token;
+    res.redirect('/dashboard');
+  } else {
+    res.send(
+        `
+        <p>El usuario o la contraseña son incorrectos</p>
+        <a href="/">Vuelve a identificarte</a>
+        <a href="/login/create">Crea un usuario</a>
+        `
+    )
+  }
+    },
+
+    async createUser (req,res){
         try{
             res.send(
                 `

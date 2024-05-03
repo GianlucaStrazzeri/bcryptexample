@@ -7,20 +7,6 @@ const { users } = require('../data/users');
 
   
 
-router.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  const user = users.find(
-    (user) => user.username === username && user.password === password
-  );
-
-  if (user) {
-    const token = generateToken(user);
-    req.session.token = token;
-    res.redirect('/dashboard');
-  } else {
-    res.status(401).json({ mensaje: 'Credenciales incorrectas' });
-  }
-});
 
 router.get('/dashboard', verifyToken, (req, res) => {
   const userId = req.user;
