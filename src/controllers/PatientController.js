@@ -18,11 +18,17 @@ const PatientController={
             
             res.send(
                 `
+              <div style="
+                display:flex;
+                flex-direction:column;
+                align-items:center
+              ">
                 <a href="/dashboard"><button>Home</button></a>
                 <a href="/login/create"><button>Crea un nuevo usuario</button></a>
                 <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
                 <form action="/logout" method="post">
                     <button type="submit">Cerrar sesión</button> 
+              </div>
                 </form>
                 <div style="
                 display:flex;
@@ -94,7 +100,12 @@ const PatientController={
               <li>Historial Medico: ${patient.historialMedico}</li>
               <li> ID: ${patient._id}</li>
               </ul>
-              
+              <form action="/patient/update/${id}" method="post">
+              <label for="name">Nombre</label>
+                <input type="text"placeholder="Nombre" name="nombre"></input>
+                <button type="submit">Modificar Datos</button>
+              </form>
+
               <form action="/patients/${id}" method="POST">
                 <button type="submit">Borrar</button>
               </form>
@@ -311,12 +322,31 @@ const PatientController={
             console.log(error)
             res.status(500).json({ error: "Internal server error" });
         }
+    },
+
+    async updatePatientNameByID (req,res){
+            try {
+              const id = req.params._id
+              const name = req.body.name
+              const updateNamePatient = await Patient.findByIdAndUpdate(
+                id, {
+                  name
+                }, {new: true}
+              )
+              if(!updateNamePatient) {//si el producto no existe devolverá un error 404
+                return res.status(404).json({mensaje: 'Product id not found'})
+              }
+              res.json(updateNamePatient)
+            } catch (error) {
+              console.log(error)
+            }
+          }
     }
 
    
 
     
 
-}
+
 
 module.exports= PatientController;
