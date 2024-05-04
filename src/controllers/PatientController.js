@@ -184,7 +184,7 @@ const PatientController={
                 "
                 >
 
-
+                
                 <label for="name">Sexo</label>
                 <input type="text"placeholder="Genero" name="genero"></input>
                 </div>
