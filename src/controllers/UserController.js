@@ -181,7 +181,8 @@ const UserController={
                         margin: 2px 2px 2px 2px;
                         ">
                     
-                    <a href="/user/ssr/${user._id}">${user.username} </a>
+                    <a href="/user/ssr/${user._id}">${user.username}  </a>
+                    
                         </div>
                     `
                 )}).join('')}
@@ -217,7 +218,7 @@ const UserController={
           align-items:center;
           border: 1px solid black;
           ">
-          <a href="/dashboard">Home</a>
+          <a href="/">Home</a>
           <ul>
           <li>Nombre: ${user.nombre}</li>
           <li>Username: ${user.username}</li>
