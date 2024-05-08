@@ -1,41 +1,46 @@
-## Autenticación JWT con Express. 
+Phis dashboard
+La aplicación pretende crear eliminar y modificuar un listado de pacientes 
 
-Esta es una aplicación sencilla en Node.js utilizando Express para demostrar la autenticación JWT (Token Web JSON). La aplicación incluye inicio de sesión de usuarios, generación de tokens, verificación de tokens y un panel básico accesible solo para usuarios autenticados.
 
-La estructura será la siguiente:
-- routes 
-  - users.js // Aquí estarán todas las rutas
-- data
-  - users.js // Irán los usuarios de prueba de sesión con id, usuario, contraseña y nombre.
-- middlewares
-  - authMiddleware.js // Este middleware manejará la generación del token y verificación.
-- crypto
-  - config.js // Configuraremos Crypto y Bcrypt para hacer más segura nuestra app
-- app.js // Añadiremos nuestro servidor, session y uniremos el resto de la aplicación
+Tabla de Contenidos
+Introducción
+Características
+Instalación
+Uso
+Contribución
+Créditos
+Licencia
 
-## Endpoints de la API
-- GET /: Página de inicio con formulario de inicio de sesión y enlace al panel de control.
-- POST /login: Endpoint para autenticar y generar un token JWT.
-- GET /dashboard: Panel de control accesible solo con un token JWT válido.
-- POST /logout: Endpoint para cerrar sesión y destruir la sesión.
 
-1. Configuración
-- Lo primero es hacer npm install para instalar las dependencias de package.json
-- Crearemos un servidor http con express en app.js
+Características
+Lista de las principales características y funcionalidades de la aplicación. Por ejemplo:
 
-2. Paso a paso 
-- Comenzaremos a manejar los módulos y solo introduciremos lo necesario en cada uno de ellos. No se debe requerir nada que no se vaya a usar.
 
-3. Crypto
-estas 2 líneas hacen que nuestro secreto sea seguro
-``` javascript
-  const secret = crypto.randomBytes(64).toString('hex');
-  const hashedSecret = bcrypt.hashSync(secret, 10);
-```
-implementalas en `crypto/confing.js` y úsalas en secret de session y donde creas que sea necesario. 
+Seguimiento de historiales clínicos de pacientes.
+Visualización de estadísticas y métricas relevantes.
+Seguridad de datos y acceso controlado.
 
-4. Condicionantes
-En la entrada de nuestra aplicación aparecerán los inputs de `login` y `pass`. Si nos hemos logado ya y volvemos a esa entrada no deberán salir, y sí saldrá un enlace al `dashboard` y un botón de `logout`
 
-# PISTAS:
-- Puedes partir del ejercicio del vídeo y modularlo y añadir lo que necesites nuevo.
+Instalación
+Para iniciar el servidor poner en la terminal npm start
+Si todo funciona saldrá la frase:
+Servidor en http://localhost:3000
+Base de datos conectada con éxito
+
+
+Instrucciones para iniciar sesión.
+Hay dos usuarios para acceder a la aplicación
+
+Descripción de las diferentes secciones y funcionalidades.
+Apartado de Login: Permite tener acceso a la aplicación
+
+
+Recursos externos utilizados.
+-Bcrypt: Función de hash de contraseñas y derivación de claves para contraseñas basada en el cifrado Blowfish.
+-Body-parser:librería de Node. js que se utiliza con Express para analizar y procesar los datos de solicitudes HTTP, como JSON o datos de formulario.
+-Cors: Libreria que permite el uso compartido de recursos entre orígenes (CORS) ampliación de la política del mismo origen. 
+-Dotenv:Módulo de dependencia cero que carga las variables de entorno desde un archivo . env en process. env .
+-express: framework backend para construir aplicaciones web 
+-express-session: middleware que almacena los datos de sesión en el servidor; sólo guarda el ID de sesión en la propia cookie.
+-jsonwebtoken:cadena de texto que tiene tres partes (header, payload y signature) codificadas en Base64
+-mongoose:Librería para Node.js que nos permite escribir consultas para una base de datos de MongooDB, con características como validaciones, construcción de queries, middlewares, conversión de tipos y algunas otras, que enriquecen la funcionalidad de la base de datos.
