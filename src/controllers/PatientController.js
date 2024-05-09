@@ -1,4 +1,4 @@
-//Aquí estará cada  endpoint con su funcionalidad
+//Aquí estará cada endpoint con su funcionalidad
 const {Patient} =require ("../models/Patients")// requiero los pacientes de models
 const {User} =require ("../models/Users")// requiero los usuarios de models
 

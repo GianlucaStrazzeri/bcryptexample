@@ -1,25 +1,17 @@
 Phis dashboard
-La aplicación pretende crear eliminar y modificuar un listado de pacientes 
+La aplicación pretende crear eliminar y modificar un listado de pacientes 
 
 
 Tabla de Contenidos
-Introducción
-Características
-Instalación
-Uso
-Contribución
-Créditos
-Licencia
+-Características
+-Instalación
+-Estructura de Archivos
+-Uso
+-Recursos Externos empleados
 
 
 Características
 Lista de las principales características y funcionalidades de la aplicación. Por ejemplo:
-
-
-Seguimiento de historiales clínicos de pacientes.
-Visualización de estadísticas y métricas relevantes.
-Seguridad de datos y acceso controlado.
-
 
 Instalación
 Para iniciar el servidor poner en la terminal npm start
@@ -27,9 +19,40 @@ Si todo funciona saldrá la frase:
 Servidor en http://localhost:3000
 Base de datos conectada con éxito
 
-
 Instrucciones para iniciar sesión.
 Hay dos usuarios para acceder a la aplicación
+
+
+Estructura de Archivos
+-src
+--config
+---config/db.js --> Código de la conexión a la base de datos.
+--controllers
+---controllers/PatientController.js -->Funcionalidades relacionadas con la visualización creación modificación eliminación de los pacientes
+---controllers/UserController.js -->Funcionalidades relacionadas con la visualización creación modificación eliminación de los usuarios
+--crypto
+---crypto/config.js --> Trasforma el secreo y crea un hash del secreto
+--data
+---data/users.js --> Define los usuarios que tienen acceso a la aplicación
+--images
+---images/descarga.png --> imagenes para la aplicación
+--middlewares
+---middlewares/authMiddleware.js --> Crea un token , verifica el token y descodifca el usuario
+--models
+---models/Patients.js -->Modelo de Paciente para la creación de datos en Mongo
+---models/Users.js -->Modelo de usuario para la creación de datos en Mongo
+--routes
+---routes/index.js --> Todas las rutas cuya funcionalidad está en los controladores
+.env --> archivos de entorno
+.gitignore --> Archivo con documentos para no subir a github
+app.js --> Archivo en el que se levanta el servidor, se inicializa la conexión a base de datos,se utilizan middlewares globales con app.use como cors, static, session,urlencoded, se redirige el enrutamiento a routes
+readme.md
+
+
+Uso
+Seguimiento de historiales clínicos de pacientes.
+Seguridad de datos y acceso controlado.
+
 
 Descripción de las diferentes secciones y funcionalidades.
 Apartado de Login: Permite tener acceso a la aplicación
