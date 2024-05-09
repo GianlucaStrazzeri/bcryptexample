@@ -55,7 +55,25 @@ Seguridad de datos y acceso controlado.
 
 
 Descripción de las diferentes secciones y funcionalidades.
-Apartado de Login: Permite tener acceso a la aplicación
+-Apartado de Login: Se accede a través de la ruta principal: "/" Permite tener acceso a la aplicación trás insertar usuario y contraseña.
+-Ruta "patients": devuelve todos los pacientes en formato json
+-Ruta '/patients/ssr': devuelve todos los pacientes con server side rendering
+-Ruta "/patient/:_id": Devuelve un paciente por su id en formato json
+-Ruta "/patient/ssr/:_id": Devuelve un paciente por su id con server side rendering
+-Ruta "/patient/create/form": Formulario para crear nuevos Pacientes
+-Ruta "/patient/create": Crea un nuevo paciente utilizando el metodo POST
+-Ruta "/patients/:_id": Elimina un paciente desde su pagina personal, los formularios en html, solo tienen dos métodos:get y post por eso no se utiliza router.delete
+-Ruta'/patient/update/:_id':Modifica el nombre de un paciente  //No Funciona
+-Ruta'/dashboard' Verifica el token
+-Ruta:"/", Da Acceso a la HomePage y verifica si el usuario está logado
+-Ruta:"/login/create",/Get login al darle al boton crea un usuario
+-Ruta:'/user/ssr', //Devuelve  todos los Usuarios
+-Ruta:"/user/ssr/:_id",//Devuelve un usuario por su id
+-Ruta:"/login", //Crea un token si el username y el passwoord son correctos
+-Ruta:"/user/create", //Crea un nuevo usuario
+-Ruta:"/logout", //destruye la sesión
+-Ruta:"/user/:_id",Elimina un usuario desde su pagina, 
+
 
 
 Recursos externos utilizados.
